@@ -39,9 +39,16 @@ class BinarySearchTree{
    
    /*
    pre-order traversal
+   Prints the value of every node preorder
    */
    public void preOrderTraversal(Node root){
-      //implement me
+	   
+      
+	   if(root==null)return;
+	   System.out.println(root.value);
+	   preOrderTraversal(root.left);
+	   preOrderTraversal(root.right);
+	   
    }
 
    
@@ -51,6 +58,7 @@ class BinarySearchTree{
    */
    public void inOrderTraversal(Node root){
       //implement me
+	
    }
    
    
@@ -60,6 +68,7 @@ class BinarySearchTree{
    */
    public void postOrderTraversal(Node root){
       //implement me
+	   
    }
    
    
