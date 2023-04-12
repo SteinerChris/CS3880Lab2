@@ -119,7 +119,16 @@ class BinarySearchTree{
    with a largest key
    */
    public int getMax(Node root){
-	  //implement me
+	   int currMin = root.value;
+	      int otherMin = Integer.MIN_VALUE; 
+	      
+	      if(root.left!=null) otherMin = getMin(root.left);
+	      if(root.right!=null) { 
+	      	int rightMin = getMin(root.right);
+	      	if(rightMin>otherMin) otherMin=rightMin;
+	      }
+	      if(otherMin>currMin) return otherMin;
+	      else return currMin;
    }
    
    
