@@ -70,7 +70,10 @@ class BinarySearchTree{
    post-order traversal
    */
    public void postOrderTraversal(Node root){
-      //implement me
+	   if(root==null)return;
+	   preOrderTraversal(root.right);
+	   preOrderTraversal(root.left);
+	   System.out.println(root.value);
 	   
    }
    
