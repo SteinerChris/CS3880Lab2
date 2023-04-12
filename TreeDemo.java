@@ -58,7 +58,10 @@ class BinarySearchTree{
    */
    public void inOrderTraversal(Node root){
       //implement me
-	
+	   if(root==null)return;
+	   preOrderTraversal(root.left);
+	   System.out.println(root.value);
+	   preOrderTraversal(root.right);
    }
    
    
