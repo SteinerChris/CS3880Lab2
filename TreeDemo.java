@@ -84,8 +84,12 @@ class BinarySearchTree{
    with a specific value
    */
    public boolean find(Node root, int key){
-	  //implement me
-      return false;           
+	  if(root==null) return false; 
+	  if(root.value==key) return true;
+	  if(find(root.right,key)) return true;
+	  if(find(root.left,key))return true;
+	  return false;
+	  
    }
    
    
