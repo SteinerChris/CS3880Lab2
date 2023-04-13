@@ -13,14 +13,21 @@ class Node{
 class BinarySearchTree{
 
    Node root;
-   
+  
    
    /*
    recursive insert method
+	
    */
    public Node insert(Node root, int value){
+	   
+	  if(this.root==null) {
+		  this.root = new Node(value);
+		  return this.root;
+	  } 
       //base case
       if(root == null){
+    	 
          root = new Node(value);
          return root;
       }
@@ -41,6 +48,10 @@ class BinarySearchTree{
    pre-order traversal
    Prints the value of every node preorder
    */
+   /**
+    * Prints each element in the tree preOrder
+    * @param root the origin of the BinaryTree
+    */
    public void preOrderTraversal(Node root){
 	   
       
@@ -56,9 +67,18 @@ class BinarySearchTree{
    /*
    in-order traversal
    */
+   /**
+    * Prints each element in the tree InOrder
+    * 
+    * @param root origin of the BinaryTree
+    */
    public void inOrderTraversal(Node root){
       //implement me
-	   if(root==null)return;
+	   if(root==null) {
+		   System.out.println("Root is null");
+		   return;
+	   }
+	   System.out.println("not null");
 	   preOrderTraversal(root.left);
 	   System.out.println(root.value);
 	   preOrderTraversal(root.right);
@@ -69,6 +89,10 @@ class BinarySearchTree{
    /*
    post-order traversal
    */
+   /**
+    * Prints each element of the tree PostOrder
+    * @param root
+    */
    public void postOrderTraversal(Node root){
 	   if(root==null)return;
 	   preOrderTraversal(root.right);
@@ -83,6 +107,12 @@ class BinarySearchTree{
    a method to find the node in the tree
    with a specific value
    */
+   /**
+    * 
+    * @param root 
+    * @param key 
+    * @return true if key is inside the binaryTree, false if key is not in the BinaryTree
+    */
    public boolean find(Node root, int key){
 	  if(root==null) return false; 
 	  if(root.value==key) return true;
@@ -98,6 +128,11 @@ class BinarySearchTree{
    a method to find the node in the tree
    with a smallest key
    */
+   /**
+    * Searches the tree preOrder to find the smallest value
+    * @param root
+    * @return the smallest value in the binaryTree
+    */
    public int getMin(Node root){
       int currMin = root.value;
       int otherMin = Integer.MAX_VALUE; 
@@ -118,6 +153,11 @@ class BinarySearchTree{
    a method to find the node in the tree
    with a largest key
    */
+   /**
+    * searches the tree preOrder
+    * @param root
+    * @return returns the largest number in the binary tree
+    */
    public int getMax(Node root){
 	   int currMin = root.value;
 	      int otherMin = Integer.MIN_VALUE; 
@@ -174,12 +214,12 @@ class BinarySearchTree{
 public class TreeDemo{
    public static void main(String[] args){
       BinarySearchTree t1  = new BinarySearchTree();
-      t1.insert(24);
-      t1.insert(80);
-      t1.insert(18);
-      t1.insert(9);
-      t1.insert(90);
-      t1.insert(22);
+      t1.insert(t1.root, 24);
+      t1.insert(t1.root,80);
+      t1.insert(t1.root,18);
+      t1.insert(t1.root,9);
+      t1.insert(t1.root,90);
+      t1.insert(t1.root,22);
             
       System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
