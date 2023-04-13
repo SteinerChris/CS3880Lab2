@@ -42,7 +42,39 @@ class BinarySearchTree{
       return root;
    }
    
-   
+   /*
+   inserts a node into the tree
+   */
+   public void insert(int value){
+      //tree is empty
+      if(root == null){
+         root = new Node(value);
+         return;
+      }else{
+         Node current = root;
+         Node parent = null;
+         
+         while(true){
+            parent = current;
+            
+            if(value < current.value){
+               current = current.left;
+               if(current == null){
+                  parent.left = new Node(value);
+                  return;
+               }
+            }else{
+               current = current.right;
+               if(current == null){
+                  parent.right = new Node(value);
+                  return;
+               }
+            }
+           
+         }//closing while
+      
+      }//closing main if-else 
+   }
    
    /*
    pre-order traversal
@@ -75,10 +107,10 @@ class BinarySearchTree{
    public void inOrderTraversal(Node root){
       //implement me
 	   if(root==null) {
-		   System.out.println("Root is null");
+		  
 		   return;
 	   }
-	   System.out.println("not null");
+	   
 	   preOrderTraversal(root.left);
 	   System.out.println(root.value);
 	   preOrderTraversal(root.right);
@@ -134,16 +166,18 @@ class BinarySearchTree{
     * @return the smallest value in the binaryTree
     */
    public int getMin(Node root){
-      int currMin = root.value;
-      int otherMin = Integer.MAX_VALUE; 
-      
-      if(root.left!=null) otherMin = getMin(root.left);
-      if(root.right!=null) { 
-      	int rightMin = getMin(root.right);
-      	if(rightMin<otherMin) otherMin=rightMin;
-      }
-      if(otherMin<currMin) return otherMin;
-      else return currMin;
+		/*
+		 * int currMin = root.value; int otherMin = Integer.MAX_VALUE;
+		 * 
+		 * if(root.left!=null) otherMin = getMin(root.left); if(root.right!=null) { int
+		 * rightMin = getMin(root.right); if(rightMin<otherMin) otherMin=rightMin; }
+		 * if(otherMin<currMin) return otherMin; else return currMin;
+		 */
+	   Node left = root.right;
+	   while(left.left!=null) {
+		   
+	   }
+	   return left.value;
       
    }
   
@@ -159,16 +193,21 @@ class BinarySearchTree{
     * @return returns the largest number in the binary tree
     */
    public int getMax(Node root){
-	   int currMin = root.value;
-	      int otherMin = Integer.MIN_VALUE; 
-	      
-	      if(root.left!=null) otherMin = getMin(root.left);
-	      if(root.right!=null) { 
-	      	int rightMin = getMin(root.right);
-	      	if(rightMin>otherMin) otherMin=rightMin;
-	      }
-	      if(otherMin>currMin) return otherMin;
-	      else return currMin;
+//	   int currMin = root.value;
+//	      int otherMin = Integer.MIN_VALUE; 
+//	      
+//	      if(root.left!=null) otherMin = getMin(root.left);
+//	      if(root.right!=null) { 
+//	      	int rightMin = getMin(root.right);
+//	      	if(rightMin>otherMin) otherMin=rightMin;
+//	      }
+//	      if(otherMin>currMin) return otherMin;
+//	      else return currMin;
+	   Node right = root.right;
+	   while(right.right!=null) {
+		   
+	   }
+	   return right.value;
    }
    
    
@@ -214,12 +253,12 @@ class BinarySearchTree{
 public class TreeDemo{
    public static void main(String[] args){
       BinarySearchTree t1  = new BinarySearchTree();
-      t1.insert(t1.root, 24);
-      t1.insert(t1.root,80);
-      t1.insert(t1.root,18);
-      t1.insert(t1.root,9);
-      t1.insert(t1.root,90);
-      t1.insert(t1.root,22);
+      t1.insert( 24);
+      t1.insert(80);
+      t1.insert(18);
+      t1.insert(9);
+      t1.insert(90);
+      t1.insert(22);
             
       System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
